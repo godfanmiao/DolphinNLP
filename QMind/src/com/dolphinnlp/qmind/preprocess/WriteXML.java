@@ -16,6 +16,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Text; 
 
 import com.dolphinnlp.qmind.config.Config;
+import com.dolphinnlp.qmind.config.Config.VAR;
 import com.dolphinnlp.qmind.model.Answer;
 import com.dolphinnlp.qmind.model.QA;
 import com.dolphinnlp.qmind.model.Question;
@@ -112,7 +113,7 @@ public class WriteXML {
 		    transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
 		    DOMSource source = new DOMSource(document);
 		    //StreamResult result = new StreamResult(new File("Docs\\"+filename));
-		    StreamResult result = new StreamResult(new File(Config.DOCS_PATH_STRING + filename));
+		    StreamResult result = new StreamResult(new File(Config.getValue(VAR.DOCS_PATH_STRING) + filename));
 		    transformer.transform(source, result);
 		    }catch (Exception ex) {
 		    flag = false;

@@ -4,6 +4,7 @@ import java.util.*;
 
 
 import com.dolphinnlp.qmind.config.Config;
+import com.dolphinnlp.qmind.config.Config.VAR;
 import com.dolphinnlp.qmind.model.Answer;
 import com.dolphinnlp.qmind.model.QA;
 import com.dolphinnlp.qmind.model.Question;
@@ -22,7 +23,7 @@ public class PreProcess {
 	}
 	public static void main(String[] args) throws Exception
 	{
-		File dataDir = new File(Config.DATASET_PATH_STRING);
+		File dataDir = new File(Config.getValue(VAR.DATASET_PATH_STRING));
 		File[] datasets = dataDir.listFiles();
 		
 		int filenum = 0;
