@@ -1,3 +1,4 @@
 *.class
 *.properties
 QMind/WebRoot/WEB-INF/classes/
+QMind/.settings/
