@@ -18,8 +18,9 @@ public class Config {
 			this.name = name;
 		}
 	}
+
 	public Config(){}
-	private static Properties props = new Properties(); 
+	private static Properties props = new Properties();
 	static{
 		try {
 			props.load(Thread.currentThread().getContextClassLoader().getResourceAsStream("config.properties"));
@@ -32,16 +33,16 @@ public class Config {
 	public static String getValue(String key){
 		return props.getProperty(key);
 	}
-	
+
 	public static String getValue(VAR var) {
 		return props.getProperty(var.name);
 	}
 
-    public static void updateProperties(String key,String value) {
-    		props.setProperty(key, value); 
-    } 
-    
-    public static void main(String args[]) {
-    		System.out.println(getValue(VAR.DATASET_PATH_STRING));
-    }
+	public static void updateProperties(String key,String value) {
+		props.setProperty(key, value);
+	}
+
+	public static void main(String args[]) {
+		System.out.println(getValue(VAR.DATASET_PATH_STRING));
+	}
 }

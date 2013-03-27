@@ -8,5 +8,6 @@
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/convert4j.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/lucene-core-3.5.0.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/lucene-core-3.5.0-javadoc.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/IKAnalyzer2012_u6.jar"/>
 	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
 </classpath>
