@@ -7,6 +7,6 @@
 </head>
 
 <body>
-这是测试
+<%= session.getAttribute("query")%>
 </body>
 </html>

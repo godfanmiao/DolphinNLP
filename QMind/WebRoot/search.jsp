@@ -10,9 +10,8 @@
 <center>
 <h1>QMind</h1>
 
-<form id="form1" name="form1" method="post" action="">
-  <label for="textfield"></label>
-  <input type="text" name="textfield" id="textfield" />
+<form id="form1" name="searchForm" method="get" action="SearchServlet">
+  <input type="text" name="searchTextField" id="textfield" />
   <input type="submit" name="button" id="button" value="搜索" />
 </form>
 </center>
