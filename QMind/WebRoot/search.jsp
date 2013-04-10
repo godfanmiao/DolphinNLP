@@ -12,7 +12,7 @@
 
 <form id="form1" name="searchForm" method="get" action="SearchServlet">
   <input type="text" name="searchTextField" id="textfield" />
-  <input type="submit" name="button" id="button" value="搜索" />
+  <input type="submit" name="button" id="button" value="问一下" />
 </form>
 </center>
 </body>
