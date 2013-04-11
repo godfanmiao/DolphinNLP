@@ -37,12 +37,14 @@ public class LuceneIndexer {
         Document doc = new Document();
 
         Field qID = new Field("qID", qa.getQuestion().getQid(), Field.Store.YES, Field.Index.NO);
-        Field qTitle = new Field("qTitle", qa.getQuestion().getQtitle(), Field.Store.YES, Field.Index.ANALYZED);
-        Field qContent = new Field("qContent", qa.getQuestion().getQcontent(), Field.Store.YES, Field.Index.ANALYZED);
+        Field qTitle = new Field("qTitle", qa.getQuestion().getQtitle(), Field.Store.NO, Field.Index.ANALYZED);
+        Field qContent = new Field("qContent", qa.getQuestion().getQcontent(), Field.Store.NO, Field.Index.ANALYZED);
+        Field qaJSON = new Field("qaJSON", qa.toJSON().toJSONString(), Field.Store.YES, Field.Index.NO);
 
         doc.add(qID);
         doc.add(qTitle);
         doc.add(qContent);
+        doc.add(qaJSON);
 
         try {
             writer.addDocument(doc);
