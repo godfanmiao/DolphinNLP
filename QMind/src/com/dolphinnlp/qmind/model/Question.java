@@ -1,5 +1,8 @@
 package com.dolphinnlp.qmind.model;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+
 public class Question {
 	private String qid;
 	private String qtitle;
@@ -7,7 +10,7 @@ public class Question {
 	private String category;
 	private String tword;
 	private String cword;
-	
+
 	public String getTword() {
 		return tword;
 	}
@@ -20,7 +23,7 @@ public class Question {
 	public void setCword(String cword) {
 		this.cword = cword;
 	}
-	
+
 	public String getQid() {
 		return qid;
 	}
@@ -45,4 +48,36 @@ public class Question {
 	public void setCategory(String category) {
 		this.category = category;
 	}
+
+    public JSONObject toJSON() {
+        JSONObject obj = new JSONObject();
+
+        obj.put("qid", qid);
+        obj.put("qtitle", qtitle);
+        obj.put("qcontent", qcontent);
+        obj.put("category", category);
+        obj.put("tword", tword);
+        obj.put("cword", cword);
+
+        return null;
+    }
+
+    public static Question fromJSON(String json) {
+        JSONObject obj = JSON.parseObject(json);
+
+        return fromJSON(obj);
+    }
+
+    public static Question fromJSON(JSONObject obj) {
+        Question res = new Question();
+
+        res.qid = obj.getString("qid");
+        res.qtitle = obj.getString("qtitle");
+        res.qcontent = obj.getString("qcontent");
+        res.category = obj.getString("category");
+        res.tword = obj.getString("tword");
+        res.cword = obj.getString("cword");
+
+        return res;
+    }
 }
