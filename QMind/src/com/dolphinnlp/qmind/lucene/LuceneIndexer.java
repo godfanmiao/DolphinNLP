@@ -1,4 +1,4 @@
-package com.dolphinnlp.qmind.preprocess;
+package com.dolphinnlp.qmind.lucene;
 
 import java.io.File;
 import java.io.IOException;

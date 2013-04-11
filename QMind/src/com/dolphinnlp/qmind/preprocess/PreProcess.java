@@ -1,15 +1,19 @@
 package com.dolphinnlp.qmind.preprocess;
+
 import java.io.*;
 import java.util.*;
 
-
 import com.dolphinnlp.qmind.config.Config;
 import com.dolphinnlp.qmind.config.Config.VAR;
+import com.dolphinnlp.qmind.lucene.LuceneIndexer;
+
 import com.dolphinnlp.qmind.model.Answer;
 import com.dolphinnlp.qmind.model.QA;
 import com.dolphinnlp.qmind.model.Question;
+
 import com.rupeng.*;
 import com.rupeng.jero.*;
+
 public class PreProcess {
     public static String F2J(String fStr)
     {
