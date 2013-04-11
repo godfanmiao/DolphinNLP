@@ -45,10 +45,13 @@ public class QA {
 
         JSONArray answers = obj.getJSONArray("answers");
         int length = answers.size();
+        ArrayList<Answer> answerList = new ArrayList<Answer>(length);
+
         for (int i = 0; i < length; i++) {
             JSONObject answer = answers.getJSONObject(i);
-            res.answers.add(Answer.fromJSON(answer));
+            answerList.add(Answer.fromJSON(answer));
         }
+        res.setAnswers(answerList);
         return res;
     }
 }

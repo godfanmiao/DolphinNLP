@@ -59,7 +59,7 @@ public class Question {
         obj.put("tword", tword);
         obj.put("cword", cword);
 
-        return null;
+        return obj;
     }
 
     public static Question fromJSON(String json) {
