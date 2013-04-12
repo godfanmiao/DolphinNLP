@@ -1,3 +1,5 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.dolphinnlp.qmind.model.QA"%>
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" errorPage="" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -7,6 +9,17 @@
 </head>
 
 <body>
-<%=session.getAttribute("qid")%>
+<%
+	ArrayList<QA> ansList = (ArrayList<QA>)session.getAttribute("ansList");
+	
+	for(QA ans : ansList)
+	{
+		%>
+		
+		<a href = "RankServlet?qid=<%=ans.getQuestion().getQid()%>"><%=ans.getQuestion().getQtitle()%></a>
+		
+		<%		 
+	}
+ %>
 </body>
 </html>

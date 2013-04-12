@@ -11,10 +11,21 @@
     <servlet-name>SearchServlet</servlet-name>
     <servlet-class>com.dolphinnlp.qmind.servlet.SearchServlet</servlet-class>
   </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>RankServlet</servlet-name>
+    <servlet-class>com.dolphinnlp.qmind.servlet.RankServlet</servlet-class>
+  </servlet>
+
 
   <servlet-mapping>
     <servlet-name>SearchServlet</servlet-name>
     <url-pattern>/SearchServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>RankServlet</servlet-name>
+    <url-pattern>/RankServlet</url-pattern>
   </servlet-mapping>	
   <welcome-file-list>
     <welcome-file>search.jsp</welcome-file>

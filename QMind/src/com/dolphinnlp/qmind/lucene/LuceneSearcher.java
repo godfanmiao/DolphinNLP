@@ -71,7 +71,7 @@ public class LuceneSearcher {
 
     public static void main(String args[]) {
         LuceneSearcher s = new LuceneSearcher(Config.getValue(VAR.INDEX_PATH_STRING));
-        ArrayList<QA> ans = s.queryByQTitle("河南");
+        ArrayList<QA> ans = s.queryByQTitle("重庆社保局");
         for (QA qa : ans) {
             System.out.println(qa.getQuestion().getQtitle());
         }
