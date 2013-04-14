@@ -9,15 +9,22 @@
 </head>
 
 <body>
+<h1>QMind</h1>
+
 <%
-	ArrayList<QA> ansList = (ArrayList<QA>)session.getAttribute("ansList");
-	
+	ArrayList<QA> ansList = (ArrayList<QA>)session.getAttribute("ansList");	
 	for(QA ans : ansList)
 	{
-		%>
-		
-		<a href = "RankServlet?qid=<%=ans.getQuestion().getQid()%>"><%=ans.getQuestion().getQtitle()%></a>
-		
+		%>		
+		<br><a href = "RankServlet?qid=<%=ans.getQuestion().getQid()%>"><%=ans.getQuestion().getQtitle()%></a></br>
+		<%
+			if (ans.getAnswers().size() > 0)
+			{
+			%>
+			<br><%=ans.getAnswers().get(0).getAcontent() %></br>
+			<%
+			}
+		 %>
 		<%		 
 	}
  %>

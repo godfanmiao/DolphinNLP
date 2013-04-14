@@ -41,7 +41,7 @@ public class RankServlet extends HttpServlet {
 
 		HttpSession session = request.getSession();
 		String qid = request.getParameter("qid").toString();
-		System.out.println(qid);
+		//System.out.println(qid);
 		session.setAttribute("qid", qid);		
 		response.sendRedirect("result.jsp");
 	}
