@@ -1,19 +1,20 @@
-<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" errorPage="" %>
+<%@ page contentType="text/html; charset=UTF-8" language="java" import="java.sql.*" errorPage="" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>QMind</title>
+<style>html,body{height:100%}html{overflow-y:auto}#wrapper{position:relative;_position:;min-height:100%}#content{padding-bottom:100px;text-align:center}#ftCon{height:100px;position:absolute;bottom:44px;text-align:center;width:100%;margin:0 auto;z-index:0;overflow:hidden}#ftConw{width:720px;margin:0 auto}body{font:12px arial;text-align:;background:#fff}body,p,form,ul,li{margin:0;padding:0;list-style:none}body,form,#fm{position:relative}td{text-align:left}img{border:0}a{color:#00c}a:active{color:#f60}#u{color:#999;padding:4px 10px 5px 0;text-align:right}#u a{margin:0 5px}#u .reg{margin:0}#m{width:720px;margin:0 auto;margin-top:100px}#nv a,#nv b,.btn,#lk{font-size:14px}#fm{padding-left:110px;text-align:left;z-index:1}input{border:0;padding:0}#nv{height:19px;font-size:16px;margin:0 0 4px;text-align:left;text-indent:137px}.s_ipt_wr{width:418px;height:30px;display:inline-block;margin-right:5px;background:url(http://s1.bdstatic.com/r/www/img/i-1.0.0.png) no-repeat -304px 0;border:1px solid #b6b6b6;border-color:#9a9a9a #cdcdcd #cdcdcd #9a9a9a;vertical-align:top}.s_ipt{width:405px;height:22px;font:16px/22px arial;margin:5px 0 0 7px;background:#fff;outline:0;-webkit-appearance:none}.s_btn{width:95px;height:32px;padding-top:2px\9;font-size:14px;background:#ddd url(http://s1.bdstatic.com/r/www/img/i-1.0.0.png);cursor:pointer}.s_btn_h{background-position:-100px 0}.s_btn_wr{width:97px;height:34px;display:inline-block;background:url(http://s1.bdstatic.com/r/www/img/i-1.0.0.png) no-repeat -202px 0;*position:relative;z-index:0;vertical-align:top}#lg img{vertical-align:top;margin-bottom:3px}span{font:14px "宋体"}#lm{height:60px}#lh{margin:16px 0 5px;word-spacing:3px}.tools{position:absolute;top:-4px;*top:10px;right:7px}#mHolder{width:62px;position:relative;z-index:296;display:none}#mCon{height:18px;line-height:18px;position:absolute;cursor:pointer;padding:0 18px 0 0;background:url(http://s1.bdstatic.com/r/www/img/bg-1.0.0.gif) no-repeat right -134px;background-position:right -136px\9}#mCon span{color:#00c;cursor:default;display:block}#mCon .hw{text-decoration:underline;cursor:pointer}#mMenu a{width:100%;height:100%;display:block;line-height:22px;text-indent:6px;text-decoration:none;filter:none\9}#mMenu,#user ul{box-shadow:1px 1px 2px #ccc;-moz-box-shadow:1px 1px 2px #ccc;-webkit-box-shadow:1px 1px 2px #ccc;filter:progid:DXImageTransform.Microsoft.Shadow(Strength=2,Direction=135,Color="#cccccc")\9}#mMenu{width:56px;border:1px solid #9b9b9b;list-style:none;position:absolute;right:27px;top:28px;display:none;background:#fff}#mMenu a:hover{background:#ebebeb}#mMenu .ln{height:1px;background:#ebebeb;overflow:hidden;font-size:1px;line-height:1px;margin-top:-1px}#cp,#cp a{color:#666}#seth{display:none;behavior:url(#default#homepage)}#setf{display:none}#sekj{margin-left:14px}#shouji{margin-right:14px}</style>
+<style type="text/css">.bd_dialog{border:1px solid #ccc;background:#fff;color:#333;overflow:hidden}.bd_dialog_handle{width:100%;height:35px;overflow:hidden;background:#fcfcfc;border-bottom:1px solid #f2f2f2;cursor:move;-moz-user-select:none}.bd_dialog_title{line-height:24px;font-size:14px;font-weight:bold;float:left;overflow:hidden;margin:6px 10px 0 20px}.bd_dialog_close{width:14px;height:13px;float:right;background:url(http://s1.bdstatic.com/r/www/cache/user/img/login3.png) 0 -161px;overflow:hidden;margin:10px 10px 0 0;cursor:pointer}.bd_dialog_close_hover{background-position:-19px -161px}.bd_dialog_close_down{background-position:-38px -161px}.bd_dialog_main{width:auto;height:auto;padding:30px 5px 0;overflow:hidden;background:#FFF}</style>
 </head>
 
 <body>
-<center>
-<h1>QMind</h1>
-
-<form id="form1" name="searchForm" method="get" action="SearchServlet">
-  <input type="text" name="searchTextField" id="textfield" />
-  <input type="submit" name="button" id="button" value="问一问" />
-</form>
-</center>
+<div id="content"> 
+<div id="m">
+<p id="lg"><img src="http://www.google.com.hk/intl/zh-CN_cn/images/logos/images_logo_lg.gif" width="270" height="129"></p>
+<div id="fm"><form name="f" action="/s"><span class="s_ipt_wr"><input type="text" name="wd" id="kw" maxlength="100" class="s_ipt" autocomplete="off"></span><input type="hidden" name="rsv_bp" value="0"><input type="hidden" name="ch" value=""><input type="hidden" name="tn" value="baidu"><input type="hidden" name="bar" value=""><input type="hidden" name="rsv_spt" value="3"><input type="hidden" name="ie" value="utf-8"><span class="s_btn_wr"><input type="submit" value="搜一下" id="su" class="s_btn" onmousedown="this.className='s_btn s_btn_h'" onmouseout="this.className='s_btn'"></span><div id="sd_1364793330978" style="display: none;"></div></form></div>
+<p id="lm"></p>
+</div>
+</div>
 </body>
 </html>
