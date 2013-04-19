@@ -1,3 +1,5 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.dolphinnlp.qmind.model.QA"%>
 <%@ page contentType="text/html; charset=UTF-8" language="java" import="java.sql.*" errorPage="" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -8,123 +10,88 @@
 </head>
 
 <body>
-<div id="head">
-<form name="f" action="/s" class="fm"><input type="hidden" name="ie" value="utf-8"><input type="hidden" name="bs" value="xx"><input type="hidden" name="f" value="8"><input type="hidden" name="rsv_bp" value="1"><input type="hidden" name="rsv_spt" value="3"><span class="s_ipt_wr"><input name="wd" id="kw" class="s_ipt" value="" maxlength="100" autocomplete="off"></span><span class="s_btn_wr"><input type="submit" id="su" value="搜一下" class="s_btn" onmousedown="this.className='s_btn s_btn_h'" onmouseout="this.className='s_btn'"></span>
-</form>
-</div>
+
 <br>
 <div id="container" class="container_l"> 
 <div id="content_left">
-<table cellpadding="0" cellspacing="0" class="result" id="1">
-<tbody>
-<tr>
-<td class="f" style="padding-bottom:4px;">
-<h3 class="t">
-<a href="http://www.baidu.com/link?url=8nALGJqjJ4zBBpC8yDF8xDhqsTSc2FUfFmM_dZ2PKduy266nTHU5hBZxL8_opjPNA9uWAIvva6K" target="_blank"><em>每天几点</em>睡觉,<em>几点起床</em>最好?</a>
-</h3> 
-<font size="-1" class="m">3个回答 - 提问时间: 2006年08月20日</font>
-<br>
-<font size="-1"><span class="m">最佳答案: </span>楼上的说的对,成年人<em>每天</em>最好保持七到八小时的睡眠,就可以全天精神充沛,最好是早上六<em>点醒来</em>,楼主可以设闹铃,在床上懒个十分钟,这段时间可以躺在床...</font>
-</td></tr></tbody></table>
-<table cellpadding="0" cellspacing="0" class="result" id="2">
-<tbody>
-<tr>
-<td class="f" style="padding-bottom:4px;">
-<h3 class="t">
-<a href="http://www.baidu.com/link?url=8nALGJqjJ4zBBpC8yDF8xDhqsTSc2FUfFmM_dZ2PKduy266nTHU5hBZxL8_opjPNA9uWAIvva6K" target="_blank"><em>每天几点</em>睡觉,<em>几点起床</em>最好?</a>
-</h3> 
-<font size="-1" class="m">3个回答 - 提问时间: 2006年08月20日</font>
-<br>
-<font size="-1"><span class="m">最佳答案: </span>楼上的说的对,成年人<em>每天</em>最好保持七到八小时的睡眠,就可以全天精神充沛,最好是早上六<em>点醒来</em>,楼主可以设闹铃,在床上懒个十分钟,这段时间可以躺在床...</font>
-</td></tr></tbody></table>
-<table cellpadding="0" cellspacing="0" class="result" id="3">
-<tbody>
-<tr>
-<td class="f" style="padding-bottom:4px;">
-<h3 class="t">
-<a href="http://www.baidu.com/link?url=8nALGJqjJ4zBBpC8yDF8xDhqsTSc2FUfFmM_dZ2PKduy266nTHU5hBZxL8_opjPNA9uWAIvva6K" target="_blank"><em>每天几点</em>睡觉,<em>几点起床</em>最好?</a>
-</h3> 
-<font size="-1" class="m">3个回答 - 提问时间: 2006年08月20日</font>
-<br>
-<font size="-1"><span class="m">最佳答案: </span>楼上的说的对,成年人<em>每天</em>最好保持七到八小时的睡眠,就可以全天精神充沛,最好是早上六<em>点醒来</em>,楼主可以设闹铃,在床上懒个十分钟,这段时间可以躺在床...</font>
-</td></tr></tbody></table>
-<table cellpadding="0" cellspacing="0" class="result" id="4">
-<tbody>
-<tr>
-<td class="f" style="padding-bottom:4px;">
-<h3 class="t">
-<a href="http://www.baidu.com/link?url=8nALGJqjJ4zBBpC8yDF8xDhqsTSc2FUfFmM_dZ2PKduy266nTHU5hBZxL8_opjPNA9uWAIvva6K" target="_blank"><em>每天几点</em>睡觉,<em>几点起床</em>最好?</a>
-</h3> 
-<font size="-1" class="m">3个回答 - 提问时间: 2006年08月20日</font>
-<br>
-<font size="-1"><span class="m">最佳答案: </span>楼上的说的对,成年人<em>每天</em>最好保持七到八小时的睡眠,就可以全天精神充沛,最好是早上六<em>点醒来</em>,楼主可以设闹铃,在床上懒个十分钟,这段时间可以躺在床...</font>
-</td></tr></tbody></table>
-<table cellpadding="0" cellspacing="0" class="result" id="5">
-<tbody>
-<tr>
-<td class="f" style="padding-bottom:4px;">
-<h3 class="t">
-<a href="http://www.baidu.com/link?url=8nALGJqjJ4zBBpC8yDF8xDhqsTSc2FUfFmM_dZ2PKduy266nTHU5hBZxL8_opjPNA9uWAIvva6K" target="_blank"><em>每天几点</em>睡觉,<em>几点起床</em>最好?</a>
-</h3> 
-<font size="-1" class="m">3个回答 - 提问时间: 2006年08月20日</font>
-<br>
-<font size="-1"><span class="m">最佳答案: </span>楼上的说的对,成年人<em>每天</em>最好保持七到八小时的睡眠,就可以全天精神充沛,最好是早上六<em>点醒来</em>,楼主可以设闹铃,在床上懒个十分钟,这段时间可以躺在床...</font>
-</td></tr></tbody></table>
-<table cellpadding="0" cellspacing="0" class="result" id="6">
-<tbody>
-<tr>
-<td class="f" style="padding-bottom:4px;">
-<h3 class="t">
-<a href="http://www.baidu.com/link?url=8nALGJqjJ4zBBpC8yDF8xDhqsTSc2FUfFmM_dZ2PKduy266nTHU5hBZxL8_opjPNA9uWAIvva6K" target="_blank"><em>每天几点</em>睡觉,<em>几点起床</em>最好?</a>
-</h3> 
-<font size="-1" class="m">3个回答 - 提问时间: 2006年08月20日</font>
-<br>
-<font size="-1"><span class="m">最佳答案: </span>楼上的说的对,成年人<em>每天</em>最好保持七到八小时的睡眠,就可以全天精神充沛,最好是早上六<em>点醒来</em>,楼主可以设闹铃,在床上懒个十分钟,这段时间可以躺在床...</font>
-</td></tr></tbody></table>
-<table cellpadding="0" cellspacing="0" class="result" id="7">
-<tbody>
-<tr>
-<td class="f" style="padding-bottom:4px;">
 
-<h3 class="t">
-<a href="http://www.baidu.com/link?url=8nALGJqjJ4zBBpC8yDF8xDhqsTSc2FUfFmM_dZ2PKduy266nTHU5hBZxL8_opjPNA9uWAIvva6K" target="_blank"><em>每天几点</em>睡觉,<em>几点起床</em>最好?</a>
-</h3> 
-<font size="-1" class="m">3个回答 - 提问时间: 2006年08月20日</font>
-<br>
-<font size="-1"><span class="m">最佳答案: </span>楼上的说的对,成年人<em>每天</em>最好保持七到八小时的睡眠,就可以全天精神充沛,最好是早上六<em>点醒来</em>,楼主可以设闹铃,在床上懒个十分钟,这段时间可以躺在床...</font>
-</td></tr></tbody></table>
-<table cellpadding="0" cellspacing="0" class="result" id="8">
-<tbody>
-<tr>
-<td class="f" style="padding-bottom:4px;">
-<h3 class="t">
-<a href="http://www.baidu.com/link?url=8nALGJqjJ4zBBpC8yDF8xDhqsTSc2FUfFmM_dZ2PKduy266nTHU5hBZxL8_opjPNA9uWAIvva6K" target="_blank"><em>每天几点</em>睡觉,<em>几点起床</em>最好?</a>
-</h3> 
-<font size="-1" class="m">3个回答 - 提问时间: 2006年08月20日</font>
-<br>
-<font size="-1"><span class="m">最佳答案: </span>楼上的说的对,成年人<em>每天</em>最好保持七到八小时的睡眠,就可以全天精神充沛,最好是早上六<em>点醒来</em>,楼主可以设闹铃,在床上懒个十分钟,这段时间可以躺在床...</font>
-</td></tr></tbody></table>
-<table cellpadding="0" cellspacing="0" class="result" id="9">
-<tbody>
-<tr>
-<td class="f" style="padding-bottom:4px;">
-<h3 class="t">
-<a href="http://www.baidu.com/link?url=8nALGJqjJ4zBBpC8yDF8xDhqsTSc2FUfFmM_dZ2PKduy266nTHU5hBZxL8_opjPNA9uWAIvva6K" target="_blank"><em>每天几点</em>睡觉,<em>几点起床</em>最好?</a>
-</h3> 
-<font size="-1" class="m">3个回答 - 提问时间: 2006年08月20日</font>
-<br>
-<font size="-1"><span class="m">最佳答案: </span>楼上的说的对,成年人<em>每天</em>最好保持七到八小时的睡眠,就可以全天精神充沛,最好是早上六<em>点醒来</em>,楼主可以设闹铃,在床上懒个十分钟,这段时间可以躺在床...</font>
-</td></tr></tbody></table>
-<table cellpadding="0" cellspacing="0" class="result" id="10">
-<tbody>
-<tr>
-<td class="f" style="padding-bottom:4px;">
-<h3 class="t">
-<a href="http://www.baidu.com/link?url=8nALGJqjJ4zBBpC8yDF8xDhqsTSc2FUfFmM_dZ2PKduy266nTHU5hBZxL8_opjPNA9uWAIvva6K" target="_blank"><em>每天几点</em>睡觉,<em>几点起床</em>最好?</a>
-</h3> 
-<font size="-1" class="m">3个回答 - 提问时间: 2006年08月20日</font>
-<br>
-<font size="-1"><span class="m">最佳答案: </span>楼上的说的对,成年人<em>每天</em>最好保持七到八小时的睡眠,就可以全天精神充沛,最好是早上六<em>点醒来</em>,楼主可以设闹铃,在床上懒个十分钟,这段时间可以躺在床...</font>
-</td></tr></tbody></table>
+<%
+	ArrayList<QA> ansList = (ArrayList<QA>)session.getAttribute("ansList");	
+	String query = (String)session.getAttribute("query");
+	int i = 0;
+	for(QA ans : ansList)
+	{
+		i ++;
+		%>
+		<table cellpadding="0" cellspacing="0" class="result" id="<%=i%>">
+		<tbody>
+		<tr>
+		<td class="f" style="padding-bottom:4px;">
+		<h3 class="t">
+		<a href="RankServlet?qid=<%=ans.getQuestion().getQid()%>" target="_blank">
+		<%
+		String title = ans.getQuestion().getQtitle();
+		int begin = 0;
+		while (title.indexOf(query, begin) >= 0)
+		{
+			%>
+			<%=title.substring(begin, title.indexOf(query, begin))%>
+			<em><%=query%></em>
+			<%
+			begin = title.indexOf(query, begin) + query.length();
+		}
+		if (begin < title.length())
+		{
+			%>
+			<%=title.substring(begin)%>
+			<%
+		}
+		 %>
+		</a>
+		</h3>
+		<font size="-1" class="m"><%=ans.getAnswers().size() %>个回答 - 类别: <%=ans.getQuestion().getCategory() %></font>
+		<br>
+		<font size="-1">
+		<span class="m">
+		<%
+		if (ans.getAnswers().get(0).getIsbest().equals("1"))
+		{
+			%>
+			最佳答案: 
+			<%
+		}
+		else
+		{
+			%>
+			答案: 
+			<%
+		}
+		%>
+		</span>
+		<%
+		title = ans.getAnswers().get(0).getAcontent();
+		if (title.length() > 70)
+			title = title.substring(0, 70) + "...";
+		begin = 0;
+		while (title.indexOf(query, begin) >= 0)
+		{
+			%>
+			<%=title.substring(begin, title.indexOf(query, begin))%>
+			<em><%=query%></em>
+			<%
+			begin = title.indexOf(query, begin) + query.length();
+		}
+		if (begin < title.length())
+		{
+			%>
+			<%=title.substring(begin)%>
+			<%
+		}
+		 %>
+		</font>
+		</td></tr></tbody></table>
+		<%		 
+	}
+ %>
 </body>
 </html>

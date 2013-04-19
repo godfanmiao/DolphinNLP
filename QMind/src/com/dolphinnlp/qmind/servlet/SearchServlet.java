@@ -50,10 +50,12 @@ public class SearchServlet extends HttpServlet {
 			HttpSession session = request.getSession();
 			String query = request.getParameter("searchTextField");
 	        //LuceneSearcher s = new LuceneSearcher(Config.getValue(VAR.INDEX_PATH_STRING));
+			System.out.println(query);
 	        ArrayList<QA> ans = searcher.queryByQTitle(query);
 
 	        
 			session.setAttribute("ansList", ans);
+			session.setAttribute("query", query);
 			response.sendRedirect("rank.jsp");
 	}
 
