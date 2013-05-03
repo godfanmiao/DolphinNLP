@@ -46,17 +46,7 @@ public class SearchServlet extends HttpServlet {
 	 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-			
-			HttpSession session = request.getSession();
-			String query = request.getParameter("searchTextField");
-	        //LuceneSearcher s = new LuceneSearcher(Config.getValue(VAR.INDEX_PATH_STRING));
-			System.out.println(query);
-	        ArrayList<QA> ans = searcher.queryByQTitle(query);
-
-	        
-			session.setAttribute("ansList", ans);
-			session.setAttribute("query", query);
-			response.sendRedirect("rank.jsp");
+        doPost(request, response);
 	}
 
 	/**
@@ -69,9 +59,20 @@ public class SearchServlet extends HttpServlet {
 	 * @throws ServletException if an error occurred
 	 * @throws IOException if an error occurred
 	 */
-	public void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		doGet(request, response);
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html; charset=utf-8");
+        request.setCharacterEncoding("UTF-8");
+
+        HttpSession session = request.getSession();
+        String query = request.getParameter("searchTextField");
+        //LuceneSearcher s = new LuceneSearcher(Config.getValue(VAR.INDEX_PATH_STRING));
+        System.out.println(query);
+
+        ArrayList<QA> ans = searcher.queryByQTitle(query);
+
+        session.setAttribute("ansList", ans);
+        session.setAttribute("query", query);
+        response.sendRedirect("rank.jsp");
 	}
 
 	/**
