@@ -2,6 +2,7 @@ package com.dolphinnlp.qmind.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -9,11 +10,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.dolphinnlp.qmind.lucene.LuceneSearcher;
+import com.dolphinnlp.qmind.model.QA;
+
 public class RankServlet extends HttpServlet {
 
 	/**
 	 * Constructor of the object.
 	 */
+	private LuceneSearcher searcher;
 	public RankServlet() {
 		super();
 	}
@@ -38,11 +43,39 @@ public class RankServlet extends HttpServlet {
 	 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		
 		HttpSession session = request.getSession();
 		String qid = request.getParameter("qid").toString();
-		//System.out.println(qid);
-		session.setAttribute("qid", qid);		
+		String query = request.getParameter("query").toString();
+		ArrayList<QA> ansList = searcher.queryByQTitle(query);
+		QA ans = new QA();
+		for (QA qa : ansList)
+		{
+			if (qa.getQuestion().getQid().equals(qid)){
+				ans = qa;
+				break;
+			}
+		}
+		String words = ans.getAnswers().get(0).getWords();
+		String query_new = "";
+		int cnt = 0;
+		for (String word : words.split("/n"))
+		{
+			String tmp = word.split(" ")[word.split(" ").length - 1];
+			if (tmp.indexOf("/") >= 0) continue; 
+			if (query_new.indexOf(tmp) < 0)
+			{
+				query_new += " " + tmp;
+				cnt += 1;
+				if (cnt == 5) break;
+			}
+		}
+		query_new = query_new.substring(1);
+		ArrayList<QA> ansList_new = searcher.queryByQTitle(query_new);
+		
+		session.setAttribute("ans", ans);
+		session.setAttribute("ansList_new", ansList_new);
+		session.setAttribute("query_new", query_new);
 		response.sendRedirect("result.jsp");
 	}
 

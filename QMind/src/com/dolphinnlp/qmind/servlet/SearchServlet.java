@@ -62,17 +62,14 @@ public class SearchServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html; charset=utf-8");
         request.setCharacterEncoding("UTF-8");
-
-        HttpSession session = request.getSession();
-        String query = request.getParameter("searchTextField");
-        //LuceneSearcher s = new LuceneSearcher(Config.getValue(VAR.INDEX_PATH_STRING));
-        System.out.println(query);
-
+        
+		HttpSession session = request.getSession();
+		String query = request.getParameter("searchTextField");
         ArrayList<QA> ans = searcher.queryByQTitle(query);
-
-        session.setAttribute("ansList", ans);
-        session.setAttribute("query", query);
-        response.sendRedirect("rank.jsp");
+        
+		session.setAttribute("ansList", ans);
+		session.setAttribute("query", query);
+		response.sendRedirect("rank.jsp");
 	}
 
 	/**

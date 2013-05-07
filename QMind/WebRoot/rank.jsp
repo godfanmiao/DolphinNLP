@@ -1,4 +1,5 @@
 <%@page import="java.util.ArrayList"%>
+<%@page import="java.net.*"%>
 <%@page import="com.dolphinnlp.qmind.model.QA"%>
 <%@ page contentType="text/html; charset=UTF-8" language="java" import="java.sql.*" errorPage="" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -10,7 +11,9 @@
 </head>
 
 <body>
-
+<div id="head">
+<form name="f" action="SearchServlet"><span class="s_ipt_wr"><input type="text" name="searchTextField" id="kw" maxlength="100" class="s_ipt" autocomplete="off"></span><input type="hidden" name="rsv_bp" value="0"><input type="hidden" name="ch" value=""><input type="hidden" name="tn" value="baidu"><input type="hidden" name="bar" value=""><input type="hidden" name="rsv_spt" value="3"><input type="hidden" name="ie" value="utf-8"><span class="s_btn_wr"><input type="submit" value="搜一下" id="su" class="s_btn" onmousedown="this.className='s_btn s_btn_h'" onmouseout="this.className='s_btn'"></span><div id="sd_1364793330978" style="display: none;"></div></form>
+</div>
 <br>
 <div id="container" class="container_l"> 
 <div id="content_left">
@@ -28,7 +31,7 @@
 		<tr>
 		<td class="f" style="padding-bottom:4px;">
 		<h3 class="t">
-		<a href="RankServlet?qid=<%=ans.getQuestion().getQid()%>" target="_blank">
+		<a href="RankServlet?qid=<%=ans.getQuestion().getQid()%>&query=<%=URLEncoder.encode(query, "UTF-8") %>" target="_blank">
 		<%
 		String title = ans.getQuestion().getQtitle();
 		int begin = 0;
@@ -87,6 +90,8 @@
 			<%=title.substring(begin)%>
 			<%
 		}
+		if (i == 10)
+			break;
 		 %>
 		</font>
 		</td></tr></tbody></table>

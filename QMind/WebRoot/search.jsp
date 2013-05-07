@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=UTF-8" language="java" import="java.sql.*" errorPage="" pageEncoding="utf-8"%>
+<%@ page contentType="text/html; charset=UTF-8" language="java" import="java.sql.*" errorPage="" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -12,7 +12,7 @@
 <div id="content"> 
 <div id="m">
 <p id="lg"><img src="http://www.google.com.hk/intl/zh-CN_cn/images/logos/images_logo_lg.gif" width="270" height="129"></p>
-<div id="fm"><form name="f" action="SearchServlet" method="post"><span class="s_ipt_wr"><input type="text" name="searchTextField" id="kw" maxlength="100" class="s_ipt" autocomplete="off"></span><input type="hidden" name="rsv_bp" value="0"><input type="hidden" name="ch" value=""><input type="hidden" name="tn" value="baidu"><input type="hidden" name="bar" value=""><input type="hidden" name="rsv_spt" value="3"><input type="hidden" name="ie" value="utf-8"><span class="s_btn_wr"><input type="submit" value="搜一下" id="su" class="s_btn" onmousedown="this.className='s_btn s_btn_h'" onmouseout="this.className='s_btn'"></span><div id="sd_1364793330978" style="display: none;"></div></form></div>
+<div id="fm"><form name="f" action="SearchServlet"><span class="s_ipt_wr"><input type="text" name="searchTextField" id="kw" maxlength="100" class="s_ipt" autocomplete="off"></span><input type="hidden" name="rsv_bp" value="0"><input type="hidden" name="ch" value=""><input type="hidden" name="tn" value="baidu"><input type="hidden" name="bar" value=""><input type="hidden" name="rsv_spt" value="3"><input type="hidden" name="ie" value="utf-8"><span class="s_btn_wr"><input type="submit" value="搜一下" id="su" class="s_btn" onmousedown="this.className='s_btn s_btn_h'" onmouseout="this.className='s_btn'"></span><div id="sd_1364793330978" style="display: none;"></div></form></div>
 <p id="lm"></p>
 </div>
 </div>
