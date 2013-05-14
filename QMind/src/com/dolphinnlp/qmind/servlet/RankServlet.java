@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.dolphinnlp.qmind.config.Config;
+import com.dolphinnlp.qmind.config.Config.VAR;
 import com.dolphinnlp.qmind.lucene.LuceneSearcher;
 import com.dolphinnlp.qmind.model.QA;
 
@@ -28,6 +30,7 @@ public class RankServlet extends HttpServlet {
 	 */
 	public void destroy() {
 		super.destroy(); // Just puts "destroy" string in log
+		searcher.close();
 		// Put your code here
 	}
 
@@ -43,7 +46,7 @@ public class RankServlet extends HttpServlet {
 	 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+
 		HttpSession session = request.getSession();
 		String qid = request.getParameter("qid").toString();
 		String query = request.getParameter("query").toString();
@@ -100,6 +103,7 @@ public class RankServlet extends HttpServlet {
 	 * @throws ServletException if an error occurs
 	 */
 	public void init() throws ServletException {
+		searcher = new LuceneSearcher(Config.getValue(VAR.INDEX_PATH_STRING));
 		// Put your code here
 	}
 

@@ -46,7 +46,8 @@ public class SearchServlet extends HttpServlet {
 	 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-        doPost(request, response);
+			
+		doPost(request, response);
 	}
 
 	/**
@@ -59,14 +60,16 @@ public class SearchServlet extends HttpServlet {
 	 * @throws ServletException if an error occurred
 	 * @throws IOException if an error occurred
 	 */
-	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("text/html; charset=utf-8");
-        request.setCharacterEncoding("UTF-8");
-        
+	public void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		response.setContentType("text/html; charset=utf-8");
+		request.setCharacterEncoding("UTF-8");
+		
 		HttpSession session = request.getSession();
 		String query = request.getParameter("searchTextField");
-        ArrayList<QA> ans = searcher.queryByQTitle(query);
-        
+		
+		ArrayList<QA> ans = searcher.queryByQTitle(query);
+		
 		session.setAttribute("ansList", ans);
 		session.setAttribute("query", query);
 		response.sendRedirect("rank.jsp");
