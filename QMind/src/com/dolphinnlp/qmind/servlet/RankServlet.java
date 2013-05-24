@@ -3,6 +3,8 @@ package com.dolphinnlp.qmind.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -14,15 +16,18 @@ import com.dolphinnlp.qmind.config.Config;
 import com.dolphinnlp.qmind.config.Config.VAR;
 import com.dolphinnlp.qmind.lucene.LuceneSearcher;
 import com.dolphinnlp.qmind.model.QA;
+import com.dolphinnlp.qmind.wordalignment.TranslateModel;
 
 public class RankServlet extends HttpServlet {
-
+    private TranslateModel model;
 	/**
 	 * Constructor of the object.
 	 */
 	private LuceneSearcher searcher;
 	public RankServlet() {
 		super();
+		model = new TranslateModel();
+		model.load(Config.getValue(Config.VAR.INDEX_PATH_STRING));
 	}
 
 	/**
@@ -79,7 +84,16 @@ public class RankServlet extends HttpServlet {
 		}
 		query_new = query_new.substring(1);
 		ArrayList<QA> ansList_new = searcher.queryByQTitle(query_new);
-		
+		for (QA qa : ansList_new) {
+		    qa.setScore(qa.getScore() + model.getProb(words, qa.getQuestion().getTword()));
+		}
+		Collections.sort(ansList_new, new Comparator<QA>() {
+
+		    public int compare(QA o1, QA o2) {
+		        return Double.compare(o1.getScore(), o2.getScore());
+		    }
+
+		});
 		session.setAttribute("ans", ans);
 		session.setAttribute("ansList_new", ansList_new);
 		session.setAttribute("query_new", query_new);

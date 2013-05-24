@@ -68,7 +68,9 @@ public class LuceneSearcher {
             ScoreDoc[] hits = results.scoreDocs;
             for (ScoreDoc hit : hits) {
                 Document doc = searcher.doc(hit.doc);
-                ret.add(QA.fromJSON(doc.get("qaJSON")));
+                QA qa = QA.fromJSON(doc.get("qaJSON"));
+                qa.setScore(hit.score);
+                ret.add(qa);
             }
         } catch (IOException e) {
             e.printStackTrace();

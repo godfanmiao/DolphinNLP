@@ -7,9 +7,16 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 
 public class QA {
+    private double score;
 	private Question question;
 	private ArrayList<Answer> answers;
 
+	public double getScore() {
+	    return score;
+	}
+	public void setScore(double score) {
+	    this.score = score;
+	}
 	public Question getQuestion() {
 		return question;
 	}
