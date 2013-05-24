@@ -54,6 +54,7 @@ public class PreProcess {
                     System.out.println(filenum + " " + indexnum);
                 }
             }
+
             br.close();
         }
         indexer.close();

@@ -8,11 +8,13 @@ import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.index.CorruptIndexException;
 import org.apache.lucene.index.IndexReader;
+import org.apache.lucene.index.Term;
 import org.apache.lucene.queryParser.ParseException;
 import org.apache.lucene.queryParser.QueryParser;
 import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.search.Query;
 import org.apache.lucene.search.ScoreDoc;
+import org.apache.lucene.search.TermQuery;
 import org.apache.lucene.search.TopDocs;
 import org.apache.lucene.store.FSDirectory;
 import org.apache.lucene.util.Version;
@@ -41,6 +43,22 @@ public class LuceneSearcher {
         }
     }
 
+    public ArrayList<QA> queryByQId(String qid) {
+        ArrayList<QA> ret = new ArrayList<QA>();
+        try {
+            Query q = new TermQuery(new Term("qID", qid));
+            TopDocs results = searcher.search(q, 1);
+            System.out.println("find " + results.totalHits + " hits for query : " + qid);
+            ScoreDoc[] hits = results.scoreDocs;
+            for (ScoreDoc hit : hits) {
+                Document doc = searcher.doc(hit.doc);
+                ret.add(QA.fromJSON(doc.get("qaJSON")));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return ret;
+    }
     public ArrayList<QA> queryByQTitle(String query) {
         ArrayList<QA> ret = new ArrayList<QA>();
         try {
@@ -50,7 +68,6 @@ public class LuceneSearcher {
             ScoreDoc[] hits = results.scoreDocs;
             for (ScoreDoc hit : hits) {
                 Document doc = searcher.doc(hit.doc);
-                System.out.println(doc.get("qaJSON"));
                 ret.add(QA.fromJSON(doc.get("qaJSON")));
             }
         } catch (IOException e) {

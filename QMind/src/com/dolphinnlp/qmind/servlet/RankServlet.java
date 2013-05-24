@@ -50,7 +50,8 @@ public class RankServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		String qid = request.getParameter("qid").toString();
 		String query = request.getParameter("query").toString();
-		ArrayList<QA> ansList = searcher.queryByQTitle(query);
+		System.out.println("Search for QID :" + qid);
+		ArrayList<QA> ansList = searcher.queryByQId(qid);
 		QA ans = new QA();
 		for (QA qa : ansList)
 		{
@@ -68,6 +69,9 @@ public class RankServlet extends HttpServlet {
 			if (tmp.indexOf("/") >= 0) continue; 
 			if (query_new.indexOf(tmp) < 0)
 			{
+			    if (tmp.matches("[0-9|A-Z|a-z]+")) {
+			        continue;
+			    }
 				query_new += " " + tmp;
 				cnt += 1;
 				if (cnt == 5) break;
